@@ -1,0 +1,56 @@
+﻿@model ProjectRecycle.Models.Company
+
+@{
+    ViewData["Title"] = "Wastes";
+}
+
+<div>
+    <div class="d-flex flex-row gap-1">
+        <div class="col-2 bg-black me-3 min-vh-100">
+            <div class="d-flex gap-2 flex-column mt-5 ms-2">
+                <a class="text-white  p-2 text-decoration-none" asp-action="Details" asp-route-id="@Model?.CompanyId">Profile</a>
+                <a class="text-white  p-2 text-decoration-none" asp-action="Dashboard" asp-route-id="@Model?.CompanyId">Dashboard</a>
+                <h3 class="text-black bg-white p-2">Wastes</h3>
+                <a class="text-white  p-2 text-decoration-none" asp-action="Bids" asp-route-id="@Model?.CompanyId">Bids</a>
+            </div>
+
+        </div>
+        <div class="col-9">
+            <h4 class="text-center mb-5">Wastes</h4>
+            <hr />
+            <h2>Wastes Management</h2>
+            @if (Model.CompanyWastes.Any())
+            {
+                <table class="table mt-5">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Start Price</th>
+                            <th>Type</th>
+                            <th>Start Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                    @foreach (var waste in Model.CompanyWastes)
+                                    {
+                            <tr>
+                                <td>@waste.Title</td>
+                                <td>@waste.Price</td>
+                                <td>@waste.Type</td>
+                                <td>@waste.CreatedAt.ToString("yyyy-MM-dd")</td>
+                            </tr>
+                                    }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <h3 class="text_info mt-5 text-center">No Waste Created</h3>
+            }
+            <a class="btn btn-info  p-2 text-decoration-none" asp-action="WasteCreate" asp-route-id="@Model?.CompanyId">Create Waste</a>
+        </div>
+
+
+    </div>
+
+</div>

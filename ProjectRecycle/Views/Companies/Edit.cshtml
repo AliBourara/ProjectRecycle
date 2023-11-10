@@ -1,0 +1,85 @@
+﻿@model ProjectRecycle.Models.Company
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div>
+    <div class="d-flex flex-row gap-1">
+        <div class="col-2 bg-black me-3 min-vh-100">
+            <div class="d-flex gap-2 flex-column mt-5 ms-2">
+                <h3 class="text-black bg-white p-2">Profile</h3>
+                <a class="text-white  p-2 text-decoration-none"  asp-action="Dashboard" asp-route-id="@Model?.CompanyId">Dashboard</a>
+                <a class="text-white  p-2 text-decoration-none" asp-action="Wastes" asp-route-id="@Model?.CompanyId">Wastes</a>
+                <a class="text-white  p-2 text-decoration-none" asp-action="Bids" asp-route-id="@Model?.CompanyId">Bids</a>
+            </div>
+
+        </div>
+        <div class="col-9">
+            <h4>Company</h4>
+            <hr />
+<div class="row">
+    <div class="col-md-4">
+                    <form asp-action="Edit" asp-controller="Companies">
+            <input type="hidden" asp-for="CompanyId" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="WebUrl" class="control-label"></label>
+                <input asp-for="WebUrl" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Logo" class="control-label"></label>
+                <input asp-for="Logo" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+            </div>
+                        <div class="form-group">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" class="form-control" />
+                        </div>
+            <div class="form-group">
+                <label asp-for="ActivityType" class="control-label"></label>
+                <select asp-for="ActivityType" class="form-control">
+                    <option selected value="0">indiustrial</option>
+                    <option value="1">commercial</option>
+                    <option value="2">construction</option>
+                    <option value="3">argriculture</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a <a asp-action="Details" asp-route-id="@Model?.CompanyId">Back to Profile</a>
+</div>
+</div>
+
+    </div>
+
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

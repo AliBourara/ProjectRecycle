@@ -1,0 +1,59 @@
+﻿@model ProjectRecycle.Models.Company
+
+@{
+    ViewData["Title"] = "Bids";
+    int? companyId = (int)Context.Session.GetInt32("companyId");
+}
+
+<div>
+    <div class="d-flex flex-row gap-1">
+        <div class="col-2 bg-black me-3 min-vh-100">
+            <div class="d-flex gap-2 flex-column mt-5 ms-2">
+
+                <a class="text-white  p-2 text-decoration-none" asp-action="Details" asp-route-id="@companyId">Profile</a>
+                <a class="text-white  p-2 text-decoration-none" asp-action="Dashboard" asp-route-id="@companyId">Dashboard</a>
+                <a class="text-white  p-2 text-decoration-none" asp-action="Wastes" asp-route-id="@companyId">Wastes</a>
+                <h3 class="text-black bg-white p-2">Bids</h3>
+
+            </div>
+
+        </div>
+        <div class="col-9">
+            <h4 class="text-center mb-5">Bids</h4>
+            <hr />
+
+            <h2>Bids Menagement</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>OffreId</th>
+                        <th>Offer Title</th>
+                        <th>Initial Offer Price</th>
+                        <th>Offer Type</th>
+                        <th>Started At</th>
+                        <th>Bids count</th>
+                        <th>Last Bid</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var bid in Model.Bids)
+                    {
+                        <tr>
+                            <td>@bid.OfferId</td>
+                            <td>@bid.Offer.Waste.Title</td>
+                            <td>@bid.Offer.StartPrice</td>
+                            <td>@bid.Offer.Waste.Type</td>
+                            <td>@bid.Offer.CreatedAt.ToShortDateString()</td>
+                            <td>@bid.Offer.Bids.Count()</td>
+                            <td>@bid.Price</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+

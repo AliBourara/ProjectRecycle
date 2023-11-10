@@ -1,0 +1,232 @@
+﻿@model IEnumerable<ProjectRecycle.Models.Offer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="~/css/Swiper.css" asp-append-version="true" />
+
+
+<div c>
+
+
+    @*
+    <h4 class="text-center mt-5 mb-5">Don't Miss Out! Last Call to Bid </h4>
+    <div class="d-flex  justify-content-around gap-4 mb-4">
+    @foreach (var item in Model)
+    {
+    <div class="card shadow" style="width: 18rem;">
+    <div class="card-body">
+    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Waste.Title)</h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+    @Html.DisplayFor(modelItem => item.Waste.Type)
+    </h6>
+    <p class="card-text">
+    @Html.DisplayFor(modelItem => item.Waste.Description)
+    </p>
+    <p>Start Price :@Html.DisplayFor(modelItem => item.StartPrice) $</p>
+    <p>Start Date :@Html.DisplayFor(modelItem => item.CreatedAt) $</p>
+    <p>End Date :@Html.DisplayFor(modelItem => item.EndDate) $</p>
+    <a asp-action="Details" asp-route-id="@item.OfferId">View Offer</a>
+    </div>
+    </div>
+    }
+    </div> *@
+
+
+    <div class="introcontainer">
+        <!-- Slider main container -->
+
+        <h1 class="text-center text-light mt-5 ">Explore</h1>
+        <h4 class="text-center mt-5 mb-5">Don't Miss Out! Last Call to Bid </h4>
+        <div class="swiper-container">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper ">
+                <!-- Slides -->
+                @foreach (var item in Model)
+                {
+                    <div class="swiper-slide">
+                        <div class="cards">
+                            <div class="card ong">
+                                <img src="https://images.pexels.com/photos/3457243/pexels-photo-3457243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+                                <div class="text">
+                                </div>
+                                <div class="title-box">
+                                    <h4>
+                                        @Html.DisplayFor(modelItem => item.Waste.Description)
+                                    </h4>
+                                    <h4> @Html.DisplayFor(modelItem => item.Waste.Type)</h4>
+                                    <h4>Start Price :@Html.DisplayFor(modelItem => item.StartPrice) $</h4>
+                                    <h4>Start Date :@Html.DisplayFor(modelItem => item.CreatedAt) $</h4>
+                                    <h4>End Date :@Html.DisplayFor(modelItem => item.EndDate) $</h4>
+                                    <a asp-action="Details" asp-route-id="@item.OfferId">View Offer</a>
+                                    <div class="seperator"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-arrows">
+                <div class="swiper-button-prev"><span></span> </div>
+                <div class="swiper-button-next"><span></span></div>
+            </div>
+
+            <!-- If we need scrollbar -->
+        </div>
+
+
+
+        <h4 class="text-center mt-5 mb-5">Popular Auctions </h4>
+        <div class="swiper-container">
+            <!-- Additional required wrapper -->
+
+            <div class="swiper-wrapper ">
+                <!-- Slides -->
+                @foreach (var item in Model)
+                {
+                    <div class="swiper-slide">
+                        <div class="cards">
+                            <div class="card ong">
+                                <img src="https://images.pexels.com/photos/3457243/pexels-photo-3457243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+                                <div class="text">
+                                </div>
+                                <div class="title-box">
+                                    <h4>
+                                        @Html.DisplayFor(modelItem => item.Waste.Description)
+                                    </h4>
+                                    <h4> @Html.DisplayFor(modelItem => item.Waste.Type)</h4>
+                                    <h4>Start Price :@Html.DisplayFor(modelItem => item.StartPrice) $</h4>
+                                    <h4>Start Date :@Html.DisplayFor(modelItem => item.CreatedAt) $</h4>
+                                    <h4>End Date :@Html.DisplayFor(modelItem => item.EndDate) $</h4>
+                                    <a asp-action="Details" asp-route-id="@item.OfferId">View Offer</a>
+                                    <div class="seperator"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-arrows">
+                <div class="swiper-button-prev"><span></span> </div>
+                <div class="swiper-button-next"><span></span></div>
+            </div>
+
+            <!-- If we need scrollbar -->
+        </div>
+
+
+
+        <h4 class="text-center mt-5 mb-5">Newest Auctions</h4>
+        <div class="swiper-container">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper ">
+                <!-- Slides -->
+                @foreach (var item in Model)
+                {
+                    <div class="swiper-slide">
+                        <div class="cards">
+                            <div class="card ong">
+                                <img src="https://images.pexels.com/photos/3457243/pexels-photo-3457243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+                                <div class="text">
+                                </div>
+                                <div class="title-box">
+                                    <h4 class="fw-bold">
+                                        @Html.DisplayFor(modelItem => item.Waste.Description)
+                                    </h4>
+                                    <h4> @Html.DisplayFor(modelItem => item.Waste.Type)</h4>
+                                    <h4>Start Price :@Html.DisplayFor(modelItem => item.StartPrice) $</h4>
+                                    <h4>Start Date :@Html.DisplayFor(modelItem => item.CreatedAt) $</h4>
+                                    <h4>End Date :@Html.DisplayFor(modelItem => item.EndDate) $</h4>
+                                    <a asp-action="Details" asp-route-id="@item.OfferId">View Offer</a>
+                                    <div class="seperator"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-arrows">
+                <div class="swiper-button-prev"><span></span> </div>
+                <div class="swiper-button-next"><span></span></div>
+            </div>
+
+            <!-- If we need scrollbar -->
+        </div>
+    </div>
+
+
+
+    @* <p class="d-flex justify-content-end mb-5 me-2 pe-5">
+    <a asp-action="Index">See More</a>
+    </p>
+
+    <h4 class="text-center mt-5 mb-5">Popular Auctions </h4>
+    <div class="d-flex justify-content-around  gap-4 mb-4">
+    @foreach (var item in Model)
+    {
+    <div class="card shadow" style="width: 18rem;">
+    <div class="card-body">
+    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Waste.Title)</h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+    @Html.DisplayFor(modelItem => item.Waste.Type)
+    </h6>
+    <p class="card-text">
+    @Html.DisplayFor(modelItem => item.Waste.Description)
+    </p>
+    <p>Start Price :@Html.DisplayFor(modelItem => item.StartPrice) $</p>
+    <p>Start Date :@Html.DisplayFor(modelItem => item.CreatedAt) $</p>
+    <p>End Date :@Html.DisplayFor(modelItem => item.EndDate) $</p>
+    <a asp-action="Details" asp-route-id="@item.OfferId">View Offer</a>
+    </div>
+    </div>
+    }
+    </div>
+    <p class="d-flex justify-content-end mb-5 me-2 pe-5">
+    <a asp-action="Index">See More</a>
+    </p>
+
+    <h4 class="text-center mt-5 mb-5">Newest Auctions</h4>
+    <div class="d-flex justify-content-around  gap-4 mb-4">
+    @foreach (var item in Model)
+    {
+    <div class="card shadow" style="width: 18rem;">
+    <div class="card-body">
+    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Waste.Title)</h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+    @Html.DisplayFor(modelItem => item.Waste.Type)
+    </h6>
+    <p class="card-text">
+    @Html.DisplayFor(modelItem => item.Waste.Description)
+    </p>
+    <p>Start Price :@Html.DisplayFor(modelItem => item.StartPrice) $</p>
+    <p>Start Date :@Html.DisplayFor(modelItem => item.CreatedAt) $</p>
+    <p>End Date :@Html.DisplayFor(modelItem => item.EndDate) $</p>
+    <a asp-action="Details" asp-route-id="@item.OfferId">View Offer</a>
+    </div>
+    </div>
+    }
+    </div>
+    <p class="d-flex justify-content-end mb-5 me-2 pe-5">
+    <a asp-action="Index">See More</a>
+    </p> *@
+
+
+</div>
+@section Scripts {
+    <script src="~/js/Swiper.js"> </script>
+    }

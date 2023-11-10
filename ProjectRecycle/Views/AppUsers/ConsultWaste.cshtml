@@ -1,0 +1,61 @@
+﻿@model ProjectRecycle.Models.AppUser
+
+@{
+    ViewData["Title"] = "ConsultWaste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex flex-row gap-1">
+    <div class="col-2 bg-info me-3 min-vh-100">
+        <div class="d-flex gap-2 flex-column mt-5 ms-2">
+            <a class="text-white  p-2 text-decoration-none" asp-controller="AppUsers" asp-action="Consultant" asp-route-id="@Model?.UserId">Profile</a>
+            <h3 class="text-info bg-white p-2" >Wastes</h3>
+            <a class="text-white  p-2 text-decoration-none" asp-controller="AppUsers" asp-action="ConsultOffre" asp-route-id="@Model?.UserId">Offres</a>
+        </div>
+
+    </div>
+    <div class="col-9">
+        <h4>Wastes</h4>
+        <hr />
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Company Name</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var mission in Model.Missions)
+                    {
+                        foreach (var waste in mission.Waste.Offers.Select(offer => offer.Waste))
+                        {
+                            <tr>
+                                <td>@waste.Owner.Name</td>
+                                <td>@waste.Title</td>
+                                <td>@waste.Price</td>
+                                <td>@waste.Quantity</td>
+                                <td>@waste.Description</td>
+                                <td>@waste.Type</td>
+                                <td>@waste.Validation.Status.ToString()</td>
+                                <td>
+                                    <a asp-action="ChangeStatus" asp-route-wasteId="@waste.WasteId" class="btn btn-primary">Change Status</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        </div>
+
+    </div>
+    
+</div>
+

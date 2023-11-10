@@ -1,0 +1,77 @@
+﻿@model ProjectRecycle.Models.Company
+
+@{
+    ViewData["Title"] = "Wastes";
+}
+
+<div>
+<div class="d-flex flex-row gap-1">
+    <div class="col-2 bg-black me-3 min-vh-100">
+         <div class="d-flex gap-2 flex-column mt-5 ms-2">
+                <a class="text-white  p-2 text-decoration-none" asp-action="Details" asp-route-id="@Model?.CompanyId">Profile</a>
+                <a class="text-white  p-2 text-decoration-none" asp-action="Dashboard" asp-route-id="@Model?.CompanyId">Dashboard</a>
+                <h3 class="text-black bg-white p-2">Wastes</h3>
+                <a class="text-white  p-2 text-decoration-none" asp-action="Bids" asp-route-id="@Model?.CompanyId">Bids</a>
+         </div>
+
+    </div>
+    <div class="col-9">
+        <h4 class="text-center mb-5">Submit Waste</h4>
+    <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="CreateWaste">
+                        <input type="hidden" asp-for="@Model.CompanyId" />
+                        <div class="form-group">
+                            <label class="control-label">Title</label>
+                            <input name="Title" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Price</label>
+                            <input name="Price" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Quantity</label>
+                            <input name="Quantity" class="form-control" />
+                            
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Analyse Document</label>
+                            <input name="AnalyseDocument" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Description</label>
+                            <input name="Description" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Available Date</label>
+                            <input type="date" name="AvailableDate" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Ending Availability</label>
+                            <input type="date" name="EndingAvailability" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Type</label>
+                            <select name="Type" class="form-control">
+                                <option selected value="0">Plastic</option>
+                                <option value="1">Metal</option>
+                                <option value="2">Concrete</option>
+                                <option value="3">Wood</option>
+                                <option value="4">Paper</option>
+                                <option value="5">hazardous</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+
+</div>
+    
+    
+</div>
+    

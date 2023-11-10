@@ -1,0 +1,60 @@
+﻿@model ProjectRecycle.Models.Offer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Html.DisplayFor(model => model.Waste.Title)</h1>
+
+<div class="row">
+    <dl class="col-6 d-flex flex-column gap-3">
+        <dt class="col-sm-2">
+            Description :
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Waste.Description)
+        </dd>
+        <dt class="col-sm-2">
+            Type :
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Waste.Type)
+        </dd>
+        <dt class="col-sm-2">
+            Start Price :
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartPrice) $
+        </dd>
+        <dt class="col-sm-2">
+            Start Date :
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+        <dt class="col-sm-2">
+            End Date :
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+        <dt class="col-sm-2">
+            Last Bid :
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Bids.OrderByDescending(b => b.BidId).FirstOrDefault()?.Price
+        </dd>
+    </dl>
+    <div class="col-6">
+        <form asp-action="Bid" asp-controller="Offers">
+            <label class="form-label">Bid</label>
+            <input type="number" name="CompanyId" class="form-control" placeholder="Company Id" />
+            <input type="hidden" asp-for="@Model.OfferId" />
+            <input class="form-control" type="number" name="Price" />
+            <button class="btn btn-success" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to Explore</a>
+</div>
